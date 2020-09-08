@@ -8,17 +8,19 @@ const User = require('../models/user.model');
  * @param {*} next
  */
 exports.getUserResources = async (request, response, next) => {
+  let users;
+  let errors;
+
   try {
-    let users = await User.find();
-    response.status(200).json({
-      status: true,
-      message: 'OK',
-      data: users,
-    });
+    users = await User.find();
   } catch (error) {
-    response.status(500).json({
-      status: false,
-      error,
+    error.statusCode = 500;
+    errors = error;
+  } finally {
+    response.status(errors ? errors.statusCode : 200).json({
+      success: errors ? false : true,
+      data: users ? users : undefined,
+      error: errors ? errors.message : undefined,
     });
   }
 };
@@ -31,17 +33,23 @@ exports.getUserResources = async (request, response, next) => {
  * @param {*} next
  */
 exports.getUserResourceById = async (request, response, next) => {
+  let user;
+  let errors;
+
   try {
-    let user = await User.findById(request.params.id);
-    response.status(200).json({
-      status: true,
-      message: 'OK',
-      data: user,
-    });
+    user = await User.findById(request.params.id);
+
+    if (!user) {
+      errors = { statusCode: 404, message: 'User not found!' };
+    }
   } catch (error) {
-    response.status(500).json({
-      status: false,
-      error,
+    error.statusCode = 500;
+    errors = error;
+  } finally {
+    response.status(errors ? errors.statusCode : 200).json({
+      success: errors ? false : true,
+      data: user ? user : undefined,
+      error: errors ? errors.message : undefined,
     });
   }
 };
@@ -54,23 +62,25 @@ exports.getUserResourceById = async (request, response, next) => {
  * @param {*} next
  */
 exports.createUserResource = async (request, response, next) => {
+  let user;
+  let errors;
+
   try {
-    let user = new User({
+    let createdUser = new User({
       firstName: request.body.firstName,
       lastName: request.body.lastName,
       email: request.body.email,
       password: request.body.password,
     });
-    user = await user.save();
-    response.status(201).json({
-      status: true,
-      message: 'OK',
-      data: user,
-    });
+    user = await createdUser.save();
   } catch (error) {
-    response.status(500).json({
-      status: false,
-      error,
+    error.statusCode = error._message === 'User validation failed' ? 400 : 500;
+    errors = error;
+  } finally {
+    response.status(errors ? errors.statusCode : 201).json({
+      success: errors ? false : true,
+      data: user ? user : undefined,
+      error: errors ? errors.message : undefined,
     });
   }
 };
