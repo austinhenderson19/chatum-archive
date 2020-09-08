@@ -16,7 +16,21 @@ services:
     image: node:latest
     command: npm run dev
     volumes:
-      - ./microservices/chat:/usr/src/app
+      - ./services/chat:/usr/src/app
     working_dir: /usr/src/app
     ports:
       - '4000:4000'
+
+  users-service:
+    image: node:latest
+    command: npm run dev
+    volumes:
+      - ./services/users:/usr/src/app
+    working_dir: /usr/src/app
+    ports:
+      - '4001:4001'
+
+  users-database:
+    image: mongo:latest
+    volumes:
+      - ./services/users/configuration/database/:/data/db

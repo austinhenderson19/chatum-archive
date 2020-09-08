@@ -1,0 +1,30 @@
+{
+  "name": "users-service",
+  "version": "1.0.0",
+  "description": "The users microservice for all CRUD operations related to the Users resource",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "users",
+    "microservice",
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "author": "Austin Henderson",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.3"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  }
+}

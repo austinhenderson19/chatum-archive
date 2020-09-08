@@ -1,0 +1,27 @@
+{
+  "name": "chat-service",
+  "version": "1.0.0",
+  "description": "The Chat service that allows for socket based communication",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "chat",
+    "socket",
+    "socket.io",
+    "messages",
+    "messenger",
+    "text"
+  ],
+  "author": "Austin Henderson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
