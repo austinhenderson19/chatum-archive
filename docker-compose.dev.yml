@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  nuxt-application:
+    image: node:latest
+    command: npm run dev
+    volumes:
+      - ./client:/usr/src/app
+    working_dir: /usr/src/app
+    ports:
+      - '3000:3000'
+    environment:
+      HOST: 0.0.0.0
+
+  chat-service:
+    image: node:latest
+    command: npm run dev
+    volumes:
+      - ./microservices/chat:/usr/src/app
+    working_dir: /usr/src/app
+    ports:
+      - '4000:4000'
