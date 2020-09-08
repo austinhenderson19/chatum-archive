@@ -22,7 +22,7 @@ The single page application located in [src/client](src/client) defines a web-ba
 
 ### Microservices
 
-Multiple express applications located in [src/microservices](src/microservices) defines a microservice implementation.
+Multiple express applications located in [src/services](src/services) defines a microservice implementation.
 
 ### Reverse Proxy
 
