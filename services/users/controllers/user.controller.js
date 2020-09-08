@@ -93,6 +93,9 @@ exports.createUserResource = async (request, response, next) => {
  * @param {*} next
  */
 exports.updateUserResource = async (request, response, next) => {
+  let user;
+  let errors;
+
   try {
     await User.updateOne(
       { _id: request.params.id },
@@ -103,16 +106,19 @@ exports.updateUserResource = async (request, response, next) => {
         password: request.body.password,
       }
     );
-    let user = await User.findById(request.params.id);
-    response.status(201).json({
-      status: true,
-      message: 'OK',
-      data: user,
-    });
+    user = await User.findById(request.params.id);
+
+    if (!user) {
+      errors = { statusCode: 404, message: 'User not found!' };
+    }
   } catch (error) {
-    response.status(500).json({
-      status: false,
-      error,
+    error.statusCode = error._message === 'User validation failed' ? 400 : 500;
+    errors = error;
+  } finally {
+    response.status(errors ? errors.status : 200).json({
+      success: errors ? false : true,
+      data: user ? user : undefined,
+      error: errors ? error.message : undefined,
     });
   }
 };
@@ -125,16 +131,17 @@ exports.updateUserResource = async (request, response, next) => {
  * @param {*} next
  */
 exports.deleteUserResource = async (request, response, next) => {
+  let errors;
+
   try {
     await User.deleteOne({ _id: request.params.id });
-    response.status(201).json({
-      status: true,
-      message: 'OK',
-    });
   } catch (error) {
-    response.status(500).json({
-      status: false,
-      error,
+    error.statusCode = 500;
+    errors = error;
+  } finally {
+    response.status(errors ? errors.statusCode : 200).json({
+      success: errors ? false : true,
+      error: errors ? errors.message : undefined,
     });
   }
 };
