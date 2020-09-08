@@ -8,11 +8,11 @@ Please read all documentation before actively contributing to the project. The [
 
 ### Setup
 
-Files related to development and production environment setup are found in [docs/Setup](docs/setup).
+Files related to development and production environment setup are found in [docs/setup](docs/setup).
 
 ### Standards and Conventions
 
-Project-wide standards and conventions are defined in [docs/Standards](docs/standards).
+Project-wide standards and conventions are defined in [docs/standards](docs/standards).
 
 ## Project Components
 
