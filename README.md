@@ -26,4 +26,4 @@ Multiple express applications located in [src/microservices](src/microservices) 
 
 ### Reverse Proxy
 
-The reverse proxy NGINX server located in [src/servers/reverseproxyh](src/servers/reverseproxy) defines the forward facing Chatum web server.
+The reverse proxy NGINX server located in [src/servers/reverseproxy](src/servers/reverseproxy) defines the forward facing Chatum web server.
