@@ -18,12 +18,12 @@ Project-wide standards and conventions are defined in [docs/standards](docs/stan
 
 ### Single Page Application
 
-The single page application located in [src/client](src/client) defines a web-based SPA Nuxt project.
+The single page application located in [client](/client) defines a web-based SPA Nuxt project.
 
 ### Microservices
 
-Multiple express applications located in [src/services](src/services) defines a microservice implementation.
+Multiple express applications located in [services](/services) defines a microservice implementation.
 
 ### Reverse Proxy
 
-The reverse proxy NGINX server located in [src/servers/reverseproxy](src/servers/reverseproxy) defines the forward facing Chatum web server.
+The reverse proxy NGINX server located in [servers/reverseproxy](servers/reverseproxy) defines the forward facing Chatum web server.
