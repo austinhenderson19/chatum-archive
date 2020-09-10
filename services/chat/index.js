@@ -2,11 +2,14 @@ const express = require('express'),
   socketio = require('socket.io'),
   cors = require('cors'),
   dotenv = require('dotenv'),
-  SocketEvents = require('./socket-events/socketEvents'),
-  application = express();
+  helmet = require('helmet');
+(SocketEvents = require('./socket-events/socketEvents')), (application = express());
 
 // Load environment variables.
 dotenv.config();
+
+// Add security headers.
+application.use(helmet());
 
 // Cors middleware.
 application.use(cors());
