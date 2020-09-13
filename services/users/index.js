@@ -25,4 +25,4 @@ require('./configuration/database')();
 
 application.use('/', userRoutes);
 
-application.listen(4001, () => console.log('Listening...'));
+application.listen(process.env.PORT, () => console.log('Listening...'));
