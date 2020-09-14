@@ -5,7 +5,10 @@ const {
   createUserResource,
   updateUserResource,
   deleteUserResource,
+  verifyUserResource,
 } = require('../controllers/user.controller');
+
+router.use(verifyUserResource);
 
 router.route('/').get(getUserResources).post(createUserResource);
 
