@@ -1,29 +1,31 @@
-version: "3.7"
+version: '3.7'
 
 services:
   reverseproxy:
     image: nginx:latest
     depends_on:
-      - nuxt-application
       - chat-service
       - users-service
+      - authentication-service
     volumes:
       - ./servers/reverseproxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - "80:80"
+      - '80:80'
     logging:
       driver: none
+    networks:
+      - microservices
 
-  nuxt-application:
-    image: node:latest
-    command: npm run dev
-    volumes:
-      - ./client:/usr/src/app
-    working_dir: /usr/src/app
-    ports:
-      - "3000:3000"
-    environment:
-      HOST: 0.0.0.0
+  # nuxt-application:
+  #   image: node:latest
+  #   command: npm run dev
+  #   volumes:
+  #     - ./client:/usr/src/app
+  #   working_dir: /usr/src/app
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     HOST: 0.0.0.0
 
   chat-service:
     image: node:latest
@@ -31,19 +33,51 @@ services:
     volumes:
       - ./services/chat:/usr/src/app
     working_dir: /usr/src/app
+    networks:
+      - microservices
+
+  authentication-service:
+    image: node:latest
+    command: npm run dev
+    volumes:
+      - ./services/authentication:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - microservices
 
   users-service:
     image: node:latest
     depends_on:
       - users-database
+      - authentication-service
     command: npm run dev
     volumes:
       - ./services/users:/usr/src/app
     working_dir: /usr/src/app
+    networks:
+      - microservices
+      - users-network
 
   users-database:
     image: mongo:latest
     volumes:
       - ./services/users/configuration/database/:/data/db
+    networks:
+      - users-network
     logging:
       driver: none
+
+  event-service:
+    image: node:latest
+    command: npm run dev
+    volumes:
+      - ./services/events:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - microservices
+
+networks:
+  microservices:
+    driver: bridge
+  users-network:
+    driver: bridge

@@ -1,0 +1,26 @@
+{
+  "name": "event-bus",
+  "version": "1.0.0",
+  "description": "The event-bus handles data transfer between different microservices",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "event",
+    "event-bus",
+    "microservice"
+  ],
+  "author": "Austin Henderson",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

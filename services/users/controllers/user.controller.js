@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const axios = require('axios').default;
 
 /**
  * Fetches all User resources.
@@ -145,3 +146,32 @@ exports.deleteUserResource = async (request, response, next) => {
     });
   }
 };
+
+/**
+ * Verifies the Authorization header when the client tries to fetch any User Resource.
+ *
+ * @param {*} request
+ * @param {*} response
+ * @param {*} next
+ */
+exports.verifyUserResource = async (request, response, next) => {
+  try {
+    const verified = await axios.post(
+      'http://reverseproxy/api/v1/authentication/verify',
+      { email: 'hendersonaustin28@gmail.com', password: 'testing123' },
+      {
+        headers: request.headers,
+      }
+    );
+
+    if (!verified) {
+      throw new Error();
+    }
+
+    next();
+  } catch (error) {
+    response.status(401).json(error.response ? error.response.data : error.message);
+  }
+};
+
+exports.signup = (request, response, next) => {};
