@@ -4,7 +4,6 @@ services:
   reverseproxy:
     image: nginx:latest
     depends_on:
-      # - nuxt-application
       - chat-service
       - users-service
       - authentication-service
@@ -67,6 +66,15 @@ services:
       - users-network
     logging:
       driver: none
+
+  event-service:
+    image: node:latest
+    command: npm run dev
+    volumes:
+      - ./services/events:/usr/src/app
+    working_dir: /usr/src/app
+    networks:
+      - microservices
 
 networks:
   microservices:
