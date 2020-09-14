@@ -16,6 +16,8 @@ application.use(cors());
 // Body parsing middleware.
 application.use(express.json());
 
-application.post('/events', (request, response, next) => {});
+application.post('/events', (request, response, next) => {
+  response.status(503).send();
+});
 
 application.listen(process.env.PORT, () => console.log('Listening...'));
