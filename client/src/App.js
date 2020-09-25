@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import Layout from './components/Layout/Layout';
 import './App.scss';
 
-function App() {
-  return <div className="App">This is a test in the new font.</div>;
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <Layout />
+      </div>
+    );
+  }
 }
 
 export default App;
