@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import classes from './Layout.module.scss';
+import classes from './Backdrop.module.scss';
 
 const Layout = (props) => {
   return (
