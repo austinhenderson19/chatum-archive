@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import classes from './Backdrop.module.scss';
 
-const Layout = (props) => {
+function Layout(props) {
   return (
     <Fragment>
       <div className={classes.container}>
@@ -10,6 +10,6 @@ const Layout = (props) => {
       </div>
     </Fragment>
   );
-};
+}
 
 export default Layout;
