@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 1.5rem;
+  padding: 0 3rem;
+}
+
+.person {
+  display: flex;
+  margin-right: auto;
+
+  &__img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    margin-right: 2rem;
+    background-image: url('http://unsplash.it/400/400?random&gravity=center');
+    background-size: cover;
+  }
+
+  .content {
+    margin-right: auto;
+
+    &__heading {
+      font-size: 2.25rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.75px;
+    }
+
+    &__subHeading {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.content {
+  margin-right: auto;
+
+  &__heading {
+    font-size: 2.25rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.75px;
+  }
+
+  &__subHeading {
+    font-size: 1.2rem;
+  }
+}
+
+.settings {
+  &__icon {
+    height: 2.55rem;
+    width: 2.5rem;
+    fill: #6979f8;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 3rem;
+    }
+  }
+}

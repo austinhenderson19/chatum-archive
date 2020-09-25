@@ -18,7 +18,7 @@ Project-wide standards and conventions are defined in [docs/standards](docs/stan
 
 ### Single Page Application
 
-The single page application located in [client](/client) defines a web-based SPA Nuxt project.
+The single page application located in [client](/client) defines a web-based SPA React project.
 
 ### Microservices
 

@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  height: 85rem;
+  width: 160rem;
+  background-color: #fff;
+  border-radius: 0.7rem;
+  box-shadow: 0 1rem 6rem rgba($color: #000000, $alpha: 0.2);
+  overflow: hidden;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &--fixed {
+    flex: 0 0 25%;
+  }
+}
+
+.conversations {
+  flex: 1;
+  overflow: scroll;
+}
+
+.search,
+.chat {
+  background-color: #f9f9f9;
+}
+
+.search,
+.header {
+  flex: 0 0 11%;
+}
+
+.chat {
+  flex: 1;
+}
+
+.test {
+  color: red;
+}

@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 3rem 2rem;
+  font-size: 1.5rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid lightgray;
+  }
+
+  &--active {
+    color: white;
+    background-color: #6979f8;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin-right: 2rem;
+  background-image: url('http://unsplash.it/400/400?random&gravity=center');
+  background-size: cover;
+}
+
+.content {
+  margin-right: auto;
+
+  &__heading {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.75px;
+  }
+
+  &__subHeading {
+    font-size: 1.2rem;
+  }
+}
+
+.notification {
+  display: flex;
+  color: white;
+  height: 3rem;
+  width: 3rem;
+  background-color: #ff0909;
+  border-radius: 200rem;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
+}
